@@ -5,7 +5,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "dev": "nodemon src/index.js",
+  "start": "node src/index.js"
   },
   "keywords": [],
   "author": "Ronak Sharma",
