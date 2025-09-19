@@ -3,10 +3,10 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 dotenv.config(); // Configure environment variables
 const PORT = process.env.PORT || 5000;
+const connectDB=require('./config/db') 
 
-
+connectDB(); // Connect to the database
 const app = express(); // Initialize Express app
-
 app.use(cors()); // Enable CORS
 
 app.use(express.json()); // Enable JSON parsing
