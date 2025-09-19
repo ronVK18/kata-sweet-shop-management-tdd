@@ -1,6 +1,6 @@
-import express from 'express';
-import cors from 'cors';
-import dotenv from 'dotenv';
+const express = require("express");
+const cors = require("cors");
+const dotenv = require("dotenv");
 dotenv.config(); // Configure environment variables
 const PORT = process.env.PORT || 5000;
 
@@ -18,5 +18,7 @@ app.get("/", (req, res) => {
 app.listen(PORT, () => {
   console.log(`Backend running on http://localhost:${PORT}`); // Log the backend URL
 });
+
+module.exports=app;
 
 
