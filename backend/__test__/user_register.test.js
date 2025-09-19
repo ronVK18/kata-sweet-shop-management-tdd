@@ -4,7 +4,7 @@ const app = require("../src/index");
 describe("Auth Registration API", () => {
   it("should register a new user", async () => {
     const res = await request(app).post("/api/auth/register").send({
-      email: "test19@example.com",
+      email: "test1129@example.com",
       password: "123456",
       name: "Test User",
     });
@@ -47,6 +47,22 @@ describe("Auth Registration API", () => {
       "Name, email and password are required"
     );
   });
+  it("should not allow duplicate emails", async () => {
+  await request(app).post("/api/auth/register").send({
+    name: "User1",
+    email: "dup@example.com",
+    password: "123456",
+  });
+
+  const res = await request(app).post("/api/auth/register").send({
+    name: "User2",
+    email: "dup@example.com",
+    password: "abcdef",
+  });
+
+  expect(res.statusCode).toBe(400);
+  expect(res.body).toHaveProperty("error", "User already exists");
+});
 
   
 });
