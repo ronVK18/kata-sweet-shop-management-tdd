@@ -11,9 +11,18 @@ app.use(cors()); // Enable CORS
 
 app.use(express.json()); // Enable JSON parsing
 
-app.get("/", (req, res) => {
-  res.json({ message: "Sweet Shop Backend running 🚀" });
+app.post("/api/auth/register", (req, res) => {
+  const { email, password } = req.body;
+
+  if (!email || !password) {
+    return res.status(400).json({ error: "Email and password are required" });
+  }
+
+  // Fake token for now (replace with real JWT later)
+  const token = "fake-jwt-token";
+  res.status(201).json({ token });
 });
+
 
 app.listen(PORT, () => {
   console.log(`Backend running on http://localhost:${PORT}`); // Log the backend URL
