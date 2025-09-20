@@ -54,13 +54,23 @@ const updateSweet = async (req, res) => {
   try {
     const { id } = req.params;
     const { name, category, price, quantityInStock } = req.body;
-
+    // price validation
+    if (price !== undefined && price < 0) {
+      return res.status(400).json({ error: "Price must be positive" });
+    }
+    // stock validation
+    if (quantityInStock !== undefined && quantityInStock < 0) {
+      return res.status(400).json({ error: "Quantity in stock cannot be negative" });
+    }
     const sweet = await Sweet.findByIdAndUpdate(
       id,
       { name, category, price, quantityInStock },
       { new: true }
     );
-
+    // check if sweet exists
+    if (!sweet) {
+      return res.status(404).json({ error: "Sweet not found" });
+    }
     return res.status(200).json({ sweet });
   } catch (error) {
     console.error("Error updating sweet:", error);
