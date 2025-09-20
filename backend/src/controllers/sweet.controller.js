@@ -78,5 +78,23 @@ const updateSweet = async (req, res) => {
   }
 };
 
+// Search sweets by name, category, or price range
+const searchSweets = async (req, res) => {
+  try {
+    const { name, category, minPrice, maxPrice } = req.query;
 
+    const filter = {};
+
+    if (name) {
+      // case-insensitive search
+      filter.name = { $regex: name, $options: "i" };
+    }
+    
+    const sweets = await Sweet.find(filter);
+    res.status(200).json({ sweets });
+  } catch (error) {
+    console.error("Error searching sweets:", error);
+    res.status(500).json({ error: "Server error" });
+  }
+};
 module.exports = { addSweet, getAllSweets, updateSweet };
