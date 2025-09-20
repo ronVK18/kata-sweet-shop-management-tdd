@@ -14,8 +14,8 @@ app.use(express.json()); // Enable JSON parsing
 
 app.use("/api/auth", authRoutes);
 app.use("/api/sweets",auth, sweetsRoutes);
-// app.listen(PORT, () => {
-//   console.log(`Backend running on http://localhost:${PORT}`); // Log the backend URL
-// });
+app.listen(PORT, () => {
+  console.log(`Backend running on http://localhost:${PORT}`); // Log the backend URL
+});
 
 module.exports = app;
