@@ -1,7 +1,8 @@
 const express = require("express");
-const {addSweet,getAllSweets} = require("../controllers/sweet.controller");
+const {addSweet,getAllSweets,updateSweet} = require("../controllers/sweet.controller");
 const router = express.Router();
 
 router.post("/", addSweet);
 router.get("/", getAllSweets);
+router.put("/:id", updateSweet);
 module.exports = router;

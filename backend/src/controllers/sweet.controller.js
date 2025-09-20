@@ -50,4 +50,23 @@ const getAllSweets = async (req, res) => {
     res.status(500).json({ error: "Server error" });
   }
 };
-module.exports = { addSweet, getAllSweets };
+const updateSweet = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { name, category, price, quantityInStock } = req.body;
+
+    const sweet = await Sweet.findByIdAndUpdate(
+      id,
+      { name, category, price, quantityInStock },
+      { new: true }
+    );
+
+    return res.status(200).json({ sweet });
+  } catch (error) {
+    console.error("Error updating sweet:", error);
+    return res.status(500).json({ error: "Server error" });
+  }
+};
+
+
+module.exports = { addSweet, getAllSweets, updateSweet };
