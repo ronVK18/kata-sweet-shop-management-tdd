@@ -115,8 +115,20 @@ const purchaseSweet = async (req, res) => {
   try {
     const { id } = req.params;
     const { quantity } = req.body;
+    // quantity validation
+    if (!quantity || quantity <= 0) {
+      return res.status(400).json({ error: "Quantity must be greater than 0" });
+    }
 
     const sweet = await Sweet.findById(id);
+    // check if sweet exists
+    if (!sweet) {
+      return res.status(404).json({ error: "Sweet not found" });
+    }
+    // stock validation
+    if (sweet.quantityInStock < quantity) {
+      return res.status(400).json({ error: "Not enough stock available" });
+    }
 
     sweet.quantityInStock -= quantity;
     await sweet.save();
