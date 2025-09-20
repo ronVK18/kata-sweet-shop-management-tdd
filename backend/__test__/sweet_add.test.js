@@ -46,4 +46,12 @@ describe("Sweet API - Add Sweet", () => {
       "Quantity in stock cannot be negative"
     );
   });
+  it("should fail when required fields are missing", async () => {
+    const res = await request(app).post("/api/sweets").send({
+      name: "Rasgulla",
+    });
+
+    expect(res.statusCode).toBe(400);
+    expect(res.body).toHaveProperty("error", "All fields are required");
+  });
 });
