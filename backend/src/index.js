@@ -6,6 +6,7 @@ const PORT = process.env.PORT || 5000;
 const connectDB = require("./config/db");
 const authRoutes = require("./routes/auth.routes");
 const sweetsRoutes=require("./routes/sweet.routes");
+const auth = require("./middleware/auth");
 connectDB(); // Connect to the database
 const app = express(); // Initialize Express app
 app.use(cors()); // Enable CORS
