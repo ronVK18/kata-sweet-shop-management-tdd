@@ -41,4 +41,13 @@ const addSweet = async (req, res) => {
     res.status(500).json({ error: "Server error", details: error.message });
   }
 };
-module.exports = { addSweet };
+const getAllSweets = async (req, res) => {
+  try {
+    const sweets = await Sweet.find();
+    res.status(200).json({ sweets });
+  } catch (error) {
+    console.error("Error fetching sweets:", error);
+    res.status(500).json({ error: "Server error" });
+  }
+};
+module.exports = { addSweet, getAllSweets };

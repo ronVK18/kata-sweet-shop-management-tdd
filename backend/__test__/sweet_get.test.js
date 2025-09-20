@@ -32,7 +32,7 @@ describe("Sweet API - Get All Sweets (Protected)", () => {
     // Insert dummy sweets
     await Sweet.insertMany([
       { name: "Gulab Jamun", category: "Dessert", price: 20, quantityInStock: 50 },
-      { name: "Rasgulla", category: "Dessert", price: 15, quantityInStock: 30 },
+      { name: "Barfi", category: "Dessert", price: 15, quantityInStock: 30 },
     ]);
 
     const res = await request(app)
@@ -42,6 +42,6 @@ describe("Sweet API - Get All Sweets (Protected)", () => {
     expect(res.statusCode).toBe(200);
     expect(res.body.sweets.length).toBe(2);
     expect(res.body.sweets[0]).toHaveProperty("name", "Gulab Jamun");
-    expect(res.body.sweets[1]).toHaveProperty("name", "Rasgulla");
+    expect(res.body.sweets[1]).toHaveProperty("name", "Barfi");
   });
 });
