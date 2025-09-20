@@ -58,7 +58,7 @@ function SweetListPage() {
   const handlePurchase = async (id) => {
     try {
       const quantityToPurchase = 1;
-      await api.post(`/sweets/${id}/purchase`, { quantity: quantityToPurchase });
+      // await api.post(`/sweets/${id}/purchase`, { quantity: quantityToPurchase });
 
       setSweets((prev) =>
         prev.map((sweet) =>
