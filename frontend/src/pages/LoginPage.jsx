@@ -19,7 +19,7 @@ function LoginPage() {
       if (res.data.user.role === "admin") {
         navigate("/admin");
       } else {
-        navigate("/");
+        navigate("/sweets");
       }
     } catch (err) {
       alert(err.response?.data?.error || "Login failed");

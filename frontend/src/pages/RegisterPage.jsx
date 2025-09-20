@@ -16,7 +16,7 @@ function RegisterPage() {
       const res = await api.post("/auth/register", form);
       setUser(res.data.user);
       setToken(res.data.token);
-      navigate("/");
+      navigate("/sweets");
     } catch (err) {
       alert(err.response?.data?.error || "Registration failed");
     }
