@@ -1,5 +1,5 @@
 const request = require("supertest");
-const app = require("../src/app");
+const app = require("../src/index");
 
 describe("Sweet API - Add Sweet", () => {
   it("should add a new sweet with valid details", async () => {
@@ -12,7 +12,7 @@ describe("Sweet API - Add Sweet", () => {
 
     expect(res.statusCode).toBe(201);
     expect(res.body.sweet).toHaveProperty("name", "Gulab Jamun");
-    expect(res.body.category).toHaveProperty("name", "Dessert");
+    expect(res.body.sweet).toHaveProperty("category", "Dessert");
     expect(res.body.sweet).toHaveProperty("price", 20);
     expect(res.body.sweet).toHaveProperty("quantityInStock", 50);
   });
