@@ -120,7 +120,7 @@ Authentication Endpoints:
 Sweet Management Endpoints:
 
 * `GET /api/sweets` → List sweets
-* `POST /api/sweets` → Add sweet (Admin only)
+* `POST /api/sweets` → Add sweet
 * `PUT /api/sweets/:id` → Update sweet (Admin only)
 * `DELETE /api/sweets/:id` → Delete sweet (Admin only)
 
@@ -135,7 +135,7 @@ Sweet Management Endpoints:
 ![Login](screenshots/login_page.png)
 
 📝 Registration Page
-![Register](screenshots/registration_page.png)
+![Register](screenshots/registeration_page.png)
 
 🍬 Sweets Page
 ![Sweets](screenshots/sweets_page.png)
@@ -217,6 +217,4 @@ This project is licensed under the **MIT License** – see the [LICENSE](LICENSE
 ## 👥 Author
 
 * **Ronak Sharma** – Developer – \[Ronak Sharma](https://github.com/ronVK18)
-
-```
 
