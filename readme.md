@@ -73,32 +73,6 @@ Before running the app, make sure you have:
 ```bash
 git clone https://github.com/<your-username>/kata-sweet-shop-management-tdd.git
 cd kata-sweet-shop-management-tdd
-Samajh gaya bhai 🤝 tu chah raha hai ki README **continuous flow me ho** — bina itne alag-alag badi badi headings ke jaise “Backend Setup” aur “Frontend Setup” alag box bana rahe hain. Matlab ekdum **story-style flow** jisme code blocks inline aaye, aur har cheez ek hi sequence me likhi ho.
-
-Chalo, ab mai tera README ekdum **straight flow** me likh ke deta hu —
-
-````markdown
-# 🍭 Sweet Shop Management System
-
-A full-stack web application for managing a sweet shop’s inventory, authentication, and user roles.  
-Built with **Node.js + Express + MongoDB backend** and **React (Vite) frontend** using the **Test-Driven Development (TDD)** approach.
-
----
-
-## 🎯 Overview
-
-The system streamlines sweet shop operations with inventory tracking, user management, and admin tools. Customers can browse sweets, while admins manage stock and oversee shop activity.  
-Main goals include **easy browsing, role-based access, JWT authentication, and TDD-driven reliability**.
-
----
-
-## 🛠️ Setup and Installation
-
-Clone the repository and move into the project:
-
-```bash
-git clone https://github.com/<your-username>/kata-sweet-shop-management-tdd.git
-cd kata-sweet-shop-management-tdd
 ````
 
 Install backend dependencies, configure environment, and run the server:
@@ -146,7 +120,7 @@ Authentication Endpoints:
 Sweet Management Endpoints:
 
 * `GET /api/sweets` → List sweets
-* `POST /api/sweets` → Add sweet (Admin only)
+* `POST /api/sweets` → Add sweet
 * `PUT /api/sweets/:id` → Update sweet (Admin only)
 * `DELETE /api/sweets/:id` → Delete sweet (Admin only)
 
@@ -161,7 +135,7 @@ Sweet Management Endpoints:
 ![Login](screenshots/login_page.png)
 
 📝 Registration Page
-![Register](screenshots/registration_page.png)
+![Register](screenshots/registeration_page.png)
 
 🍬 Sweets Page
 ![Sweets](screenshots/sweets_page.png)
@@ -245,6 +219,4 @@ This project is licensed under the **MIT License** – see the [LICENSE](LICENSE
 ## 👥 Author
 
 * **Ronak Sharma** – Developer – \[Ronak Sharma](https://github.com/ronVK18)
-
-```
 
