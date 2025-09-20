@@ -43,10 +43,12 @@ const loginUser =  async (req,res)=>{
   try {
     // find user by email
     const user = await User.findOne({ email });
+    // check if user exists
+    if (!user) {
+      return res.status(401).json({ error: "Invalid email or password" });
+    }
 
-   
-
-    // compare password (model method)
+    // compare password (model method using bcrypt compare function)
     const isMatch = await user.matchPassword(password);
 
     if (!isMatch) {
