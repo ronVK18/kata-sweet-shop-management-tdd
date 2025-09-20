@@ -13,7 +13,7 @@ describe("Sweet API - Get All Sweets (Protected)", () => {
     token = jwt.sign({ id: "123", username: "testuser" }, JWT_SECRET, {
       expiresIn: "1h",
     });
-    await Sweet.deleteMany();
+    // await Sweet.deleteMany();
   });
 
   afterEach(async () => {
