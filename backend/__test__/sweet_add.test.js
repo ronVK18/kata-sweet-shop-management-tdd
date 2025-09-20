@@ -21,4 +21,29 @@ describe("Sweet API - Add Sweet", () => {
     expect(res.body.sweet).toHaveProperty("price", 20);
     expect(res.body.sweet).toHaveProperty("quantityInStock", 50);
   });
+  it("should fail when price is negative", async () => {
+    const res = await request(app).post("/api/sweets").send({
+      name: "Barfi",
+      category: "Milk Sweet",
+      price: -10,
+      quantityInStock: 10,
+    });
+
+    expect(res.statusCode).toBe(400);
+    expect(res.body).toHaveProperty("error", "Price must be positive");
+  });
+  it("should fail when quantityInStock is negative", async () => {
+    const res = await request(app).post("/api/sweets").send({
+      name: "Ladoo",
+      category: "Traditional Sweet",
+      price: 15,
+      quantityInStock: -5,
+    });
+
+    expect(res.statusCode).toBe(400);
+    expect(res.body).toHaveProperty(
+      "error",
+      "Quantity in stock cannot be negative"
+    );
+  });
 });
