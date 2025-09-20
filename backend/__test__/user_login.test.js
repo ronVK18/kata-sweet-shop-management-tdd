@@ -5,6 +5,7 @@ const User = require("../src/models/user.model");
 describe("Auth API - Login", () => {
   beforeAll(async () => {
     // Create a user in DB for login
+    await User.deleteMany(); // clean DB
     await User.create({
       name: "Login Test",
       email: "login@example.com",

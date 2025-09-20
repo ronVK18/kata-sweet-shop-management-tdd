@@ -1,19 +1,34 @@
 const request = require("supertest");
+const jwt = require("jsonwebtoken");
 const app = require("../src/index");
 const Sweet = require("../src/models/sweet.model");
 
-describe("Sweet API - Add Sweet", () => {
+const JWT_SECRET = process.env.JWT_SECRET || "secret";
+
+describe("Sweet API - Add Sweet (Protected)", () => {
+  let token;
+
+  beforeAll(() => {
+    // Generate a valid test token before running tests
+    token = jwt.sign({ id: "123", username: "testuser" }, JWT_SECRET, {
+      expiresIn: "1h",
+    });
+  });
+
   afterEach(async () => {
     await Sweet.deleteMany(); // clean DB between tests
   });
 
   it("should add a new sweet with valid details", async () => {
-    const res = await request(app).post("/api/sweets").send({
-      name: "Gulab Jamun",
-      category: "Dessert",
-      price: 20,
-      quantityInStock: 50,
-    });
+    const res = await request(app)
+      .post("/api/sweets")
+      .set("Authorization", `Bearer ${token}`)
+      .send({
+        name: "Gulab Jamun",
+        category: "Dessert",
+        price: 20,
+        quantityInStock: 50,
+      });
 
     expect(res.statusCode).toBe(201);
     expect(res.body.sweet).toHaveProperty("name", "Gulab Jamun");
@@ -21,24 +36,32 @@ describe("Sweet API - Add Sweet", () => {
     expect(res.body.sweet).toHaveProperty("price", 20);
     expect(res.body.sweet).toHaveProperty("quantityInStock", 50);
   });
+
   it("should fail when price is negative", async () => {
-    const res = await request(app).post("/api/sweets").send({
-      name: "Barfi",
-      category: "Milk Sweet",
-      price: -10,
-      quantityInStock: 10,
-    });
+    const res = await request(app)
+      .post("/api/sweets")
+      .set("Authorization", `Bearer ${token}`)
+      .send({
+        name: "Barfi",
+        category: "Milk Sweet",
+        price: -10,
+        quantityInStock: 10,
+      });
 
     expect(res.statusCode).toBe(400);
     expect(res.body).toHaveProperty("error", "Price must be positive");
   });
+
   it("should fail when quantityInStock is negative", async () => {
-    const res = await request(app).post("/api/sweets").send({
-      name: "Ladoo",
-      category: "Traditional Sweet",
-      price: 15,
-      quantityInStock: -5,
-    });
+    const res = await request(app)
+      .post("/api/sweets")
+      .set("Authorization", `Bearer ${token}`)
+      .send({
+        name: "Ladoo",
+        category: "Traditional Sweet",
+        price: 15,
+        quantityInStock: -5,
+      });
 
     expect(res.statusCode).toBe(400);
     expect(res.body).toHaveProperty(
@@ -46,10 +69,14 @@ describe("Sweet API - Add Sweet", () => {
       "Quantity in stock cannot be negative"
     );
   });
+
   it("should fail when required fields are missing", async () => {
-    const res = await request(app).post("/api/sweets").send({
-      name: "Rasgulla",
-    });
+    const res = await request(app)
+      .post("/api/sweets")
+      .set("Authorization", `Bearer ${token}`)
+      .send({
+        name: "Rasgulla",
+      });
 
     expect(res.statusCode).toBe(400);
     expect(res.body).toHaveProperty("error", "All fields are required");

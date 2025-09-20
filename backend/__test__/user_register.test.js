@@ -1,7 +1,10 @@
 const request = require("supertest");
 const app = require("../src/index");
-
+const User = require("../src/models/user.model");
 describe("Auth Registration API", () => {
+  beforeAll(async () => {
+    await User.deleteMany(); // clean DB between tests
+  });
   it("should register a new user", async () => {
     const res = await request(app).post("/api/auth/register").send({
       email: "test1129@example.com",
