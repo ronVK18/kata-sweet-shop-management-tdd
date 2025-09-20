@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1758366376686" clover="3.2.0">
-  <project timestamp="1758366376687" name="All files">
-    <metrics statements="356" coveredstatements="294" conditionals="53" coveredconditionals="40" methods="11" coveredmethods="10" elements="420" coveredelements="344" complexity="0" loc="356" ncloc="356" packages="6" files="9" classes="9"/>
+<coverage generated="1758367362592" clover="3.2.0">
+  <project timestamp="1758367362592" name="All files">
+    <metrics statements="361" coveredstatements="299" conditionals="53" coveredconditionals="40" methods="11" coveredmethods="10" elements="425" coveredelements="349" complexity="0" loc="361" ncloc="361" packages="6" files="9" classes="9"/>
     <package name="src">
       <metrics statements="21" coveredstatements="21" conditionals="1" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="index.js" path="C:\Users\RONAK\OneDrive\Desktop\kata-sweet-shop-management-tdd\backend\src\index.js">
@@ -172,14 +172,14 @@
         <line num="44" count="0" type="stmt"/>
         <line num="45" count="5" type="stmt"/>
         <line num="46" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="47" count="2" type="stmt"/>
-        <line num="48" count="2" type="stmt"/>
-        <line num="49" count="2" type="stmt"/>
-        <line num="50" count="2" type="cond" truecount="0" falsecount="1"/>
+        <line num="47" count="1" type="stmt"/>
+        <line num="48" count="1" type="stmt"/>
+        <line num="49" count="1" type="stmt"/>
+        <line num="50" count="1" type="cond" truecount="0" falsecount="1"/>
         <line num="51" count="0" type="stmt"/>
         <line num="52" count="0" type="stmt"/>
         <line num="53" count="0" type="stmt"/>
-        <line num="54" count="2" type="stmt"/>
+        <line num="54" count="1" type="stmt"/>
         <line num="55" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="56" count="4" type="stmt"/>
         <line num="57" count="4" type="stmt"/>
@@ -283,33 +283,33 @@
         <metrics statements="25" coveredstatements="23" conditionals="7" coveredconditionals="5" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
-        <line num="3" count="20" type="cond" truecount="1" falsecount="0"/>
-        <line num="4" count="20" type="stmt"/>
-        <line num="5" count="20" type="stmt"/>
-        <line num="6" count="20" type="cond" truecount="1" falsecount="0"/>
+        <line num="3" count="19" type="cond" truecount="1" falsecount="0"/>
+        <line num="4" count="19" type="stmt"/>
+        <line num="5" count="19" type="stmt"/>
+        <line num="6" count="19" type="cond" truecount="1" falsecount="0"/>
         <line num="7" count="1" type="stmt"/>
         <line num="8" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="9" count="19" type="stmt"/>
-        <line num="10" count="19" type="stmt"/>
-        <line num="11" count="19" type="stmt"/>
-        <line num="12" count="20" type="cond" truecount="0" falsecount="1"/>
+        <line num="9" count="18" type="stmt"/>
+        <line num="10" count="18" type="stmt"/>
+        <line num="11" count="18" type="stmt"/>
+        <line num="12" count="19" type="cond" truecount="0" falsecount="1"/>
         <line num="13" count="0" type="stmt"/>
         <line num="14" count="0" type="cond" truecount="1" falsecount="0"/>
-        <line num="15" count="19" type="stmt"/>
-        <line num="16" count="19" type="stmt"/>
-        <line num="17" count="20" type="cond" truecount="0" falsecount="1"/>
-        <line num="18" count="20" type="stmt"/>
-        <line num="19" count="20" type="stmt"/>
-        <line num="20" count="20" type="cond" truecount="1" falsecount="0"/>
+        <line num="15" count="18" type="stmt"/>
+        <line num="16" count="18" type="stmt"/>
+        <line num="17" count="19" type="cond" truecount="0" falsecount="1"/>
+        <line num="18" count="19" type="stmt"/>
+        <line num="19" count="19" type="stmt"/>
+        <line num="20" count="19" type="cond" truecount="1" falsecount="0"/>
         <line num="21" count="1" type="stmt"/>
         <line num="22" count="1" type="stmt"/>
-        <line num="23" count="20" type="stmt"/>
+        <line num="23" count="19" type="stmt"/>
         <line num="24" count="1" type="stmt"/>
         <line num="25" count="1" type="stmt"/>
       </file>
     </package>
     <package name="src.models">
-      <metrics statements="60" coveredstatements="60" conditionals="3" coveredconditionals="2" methods="1" coveredmethods="1"/>
+      <metrics statements="65" coveredstatements="65" conditionals="3" coveredconditionals="2" methods="1" coveredmethods="1"/>
       <file name="sweet.model.js" path="C:\Users\RONAK\OneDrive\Desktop\kata-sweet-shop-management-tdd\backend\src\models\sweet.model.js">
         <metrics statements="32" coveredstatements="32" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
@@ -346,7 +346,7 @@
         <line num="32" count="1" type="stmt"/>
       </file>
       <file name="user.model.js" path="C:\Users\RONAK\OneDrive\Desktop\kata-sweet-shop-management-tdd\backend\src\models\user.model.js">
-        <metrics statements="28" coveredstatements="28" conditionals="3" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <metrics statements="33" coveredstatements="33" conditionals="3" coveredconditionals="2" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -360,21 +360,26 @@
         <line num="11" count="1" type="stmt"/>
         <line num="12" count="1" type="stmt"/>
         <line num="13" count="1" type="stmt"/>
-        <line num="14" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="15" count="3" type="cond" truecount="0" falsecount="1"/>
-        <line num="16" count="3" type="stmt"/>
-        <line num="17" count="3" type="stmt"/>
-        <line num="18" count="3" type="stmt"/>
-        <line num="19" count="1" type="stmt"/>
-        <line num="20" count="1" type="stmt"/>
-        <line num="21" count="1" type="stmt"/>
-        <line num="22" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="23" count="2" type="stmt"/>
-        <line num="24" count="2" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="19" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="20" count="3" type="cond" truecount="0" falsecount="1"/>
+        <line num="21" count="3" type="stmt"/>
+        <line num="22" count="3" type="stmt"/>
+        <line num="23" count="3" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
         <line num="25" count="1" type="stmt"/>
         <line num="26" count="1" type="stmt"/>
-        <line num="27" count="1" type="stmt"/>
-        <line num="28" count="1" type="stmt"/>
+        <line num="27" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="28" count="2" type="stmt"/>
+        <line num="29" count="2" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
       </file>
     </package>
     <package name="src.routes">

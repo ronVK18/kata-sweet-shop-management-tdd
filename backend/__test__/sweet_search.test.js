@@ -8,16 +8,16 @@ const JWT_SECRET = process.env.JWT_SECRET || "secret";
 describe("Sweet API - Search Sweets", () => {
   let token;
 
-  beforeAll(() => {
+  beforeAll( async () => {
     token = jwt.sign({ id: "123", username: "testuser" }, JWT_SECRET, {
       expiresIn: "1h",
     });
+    await Sweet.deleteMany();
   });
 
-  beforeEach(async () => {
-    await Sweet.deleteMany();
+  beforeAll(async () => {
     await Sweet.insertMany([
-      { name: "Gulab Jamun", category: "Dessert", price: 20, quantityInStock: 50 },
+      { name: "Milk Cake", category: "Dessert", price: 20, quantityInStock: 50 },
       { name: "Rasgulla", category: "Dessert", price: 15, quantityInStock: 30 },
       { name: "Ladoo", category: "Traditional", price: 10, quantityInStock: 40 },
     ]);
