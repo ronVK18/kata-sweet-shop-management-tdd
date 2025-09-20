@@ -114,7 +114,7 @@ const searchSweets = async (req, res) => {
 const purchaseSweet = async (req, res) => {
   try {
     const { id } = req.params;
-    const {quantity} = req.body; 
+    const { quantity } = req.body;
     // quantity validation
     if (!quantity || quantity <= 0) {
       return res.status(400).json({ error: "Quantity must be greater than 0" });
@@ -139,31 +139,58 @@ const purchaseSweet = async (req, res) => {
     return res.status(500).json({ error: "Server error" });
   }
 };
-const deleteSweet=async (req, res) => {
-    // Auth check
-    if (!req.user) {
-      return res.status(401).json({ error: "No token provided" });
-    }
-    // Role check
-    if (!req.user.role || req.user.role !== "admin") {
-      return res.status(403).json({ error: "Admin access only" });
-    }
-    try {
-      const { id } = req.params;
-      const sweet = await Sweet.findByIdAndDelete(id);
-      if (!sweet) {
-        return res.status(404).json({ error: "Sweet not found" });
-      }
-      return res.status(200).json({ message: "Sweet deleted successfully" });
-    } catch (error) {
-      return res.status(500).json({ error: "Server error" });
-    }
+const deleteSweet = async (req, res) => {
+  // Auth check
+  if (!req.user) {
+    return res.status(401).json({ error: "No token provided" });
   }
-  module.exports = {
-    addSweet,
-    getAllSweets,
-    updateSweet,
-    searchSweets,
+  // Role check
+  if (!req.user.role || req.user.role !== "admin") {
+    return res.status(403).json({ error: "Admin access only" });
+  }
+  try {
+    const { id } = req.params;
+    const sweet = await Sweet.findByIdAndDelete(id);
+    if (!sweet) {
+      return res.status(404).json({ error: "Sweet not found" });
+    }
+    return res.status(200).json({ message: "Sweet deleted successfully" });
+  } catch (error) {
+    return res.status(500).json({ error: "Server error" });
+  }
+};
+const restockSweet = async (req, res) => {
+  // Auth check
+  if (!req.user) {
+    return res.status(401).json({ error: "No token provided" });
+  }
+  // Role check
+  if (!req.user.role || req.user.role !== "admin") {
+    return res.status(403).json({ error: "Admin access only" });
+  }
+  const { id } = req.params;
+  const { quantity } = req.body;
+  if (!quantity || quantity <= 0) {
+    return res.status(400).json({ error: "Quantity must be greater than 0" });
+  }
+  try {
+    const sweet = await Sweet.findById(id);
+    if (!sweet) {
+      return res.status(404).json({ error: "Sweet not found" });
+    }
+    sweet.quantityInStock += quantity;
+    await sweet.save();
+    return res.status(200).json({ message: "Sweet restocked successfully", sweet });
+  } catch (error) {
+    return res.status(500).json({ error: "Server error" });
+  }
+};
+module.exports = {
+  addSweet,
+  getAllSweets,
+  updateSweet,
+  searchSweets,
   purchaseSweet,
   deleteSweet,
+  restockSweet
 };
