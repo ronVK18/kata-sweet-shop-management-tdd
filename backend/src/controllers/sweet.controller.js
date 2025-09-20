@@ -114,7 +114,7 @@ const searchSweets = async (req, res) => {
 const purchaseSweet = async (req, res) => {
   try {
     const { id } = req.params;
-    const quantity = 1; 
+    const {quantity} = req.body; 
     // quantity validation
     if (!quantity || quantity <= 0) {
       return res.status(400).json({ error: "Quantity must be greater than 0" });

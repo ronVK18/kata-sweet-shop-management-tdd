@@ -13,7 +13,7 @@ app.use(cors()); // Enable CORS
 app.use(express.json()); // Enable JSON parsing
 app.use(express.urlencoded({ extended: true }));
 app.use("/api/auth", authRoutes);
-app.use("/api/sweets",auth, sweetsRoutes);
+app.use("/api/sweets", sweetsRoutes);
 app.listen(PORT, () => {
   console.log(`Backend running on http://localhost:${PORT}`); // Log the backend URL
 });
