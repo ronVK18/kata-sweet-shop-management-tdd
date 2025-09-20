@@ -2,16 +2,18 @@ const Sweet = require("../models/sweet.model");
 
 const addSweet = async (req, res) => {
   const { name, category, price, quantityInStock } = req.body;
-   // Validation
-    if (!name || !category || price == null || quantityInStock == null) {
-      return res.status(400).json({ error: "All fields are required" });
-    }
+  // Validation
+  if (!name || !category || price == null || quantityInStock == null) {
+    return res.status(400).json({ error: "All fields are required" });
+  }
   // check for negative values
   if (price < 0) {
     return res.status(400).json({ error: "Price must be positive" });
   }
   if (quantityInStock < 0) {
-    return res.status(400).json({ error: "Quantity in stock cannot be negative" });
+    return res
+      .status(400)
+      .json({ error: "Quantity in stock cannot be negative" });
   }
 
   try {
@@ -60,7 +62,9 @@ const updateSweet = async (req, res) => {
     }
     // stock validation
     if (quantityInStock !== undefined && quantityInStock < 0) {
-      return res.status(400).json({ error: "Quantity in stock cannot be negative" });
+      return res
+        .status(400)
+        .json({ error: "Quantity in stock cannot be negative" });
     }
     const sweet = await Sweet.findByIdAndUpdate(
       id,
@@ -107,4 +111,27 @@ const searchSweets = async (req, res) => {
     res.status(500).json({ error: "Server error" });
   }
 };
-module.exports = { addSweet, getAllSweets, updateSweet ,searchSweets};
+const purchaseSweet = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { quantity } = req.body;
+
+    const sweet = await Sweet.findById(id);
+
+    sweet.quantityInStock -= quantity;
+    await sweet.save();
+
+    return res.status(200).json({ message: "Purchase successful", sweet });
+  } catch (error) {
+    console.error("Error purchasing sweet:", error);
+    return res.status(500).json({ error: "Server error" });
+  }
+};
+
+module.exports = {
+  addSweet,
+  getAllSweets,
+  updateSweet,
+  searchSweets,
+  purchaseSweet,
+};
