@@ -182,6 +182,8 @@ Run backend tests with:
 cd backend
 npm test
 ```
+## 🧪  Test Report
+![Test Report](screenshots/test_report.png)
 
 ✔ Tests cover authentication, sweet CRUD, and role-based access.
 
