@@ -35,6 +35,36 @@ describe("Sweet API - Purchase Sweet", () => {
     expect(res.body.message).toBe("Purchase successful");
     expect(res.body.sweet.quantityInStock).toBe(5); // 10 - 5
   });
+  
+  it("should fail when purchasing more than stock", async () => {
+    const res = await request(app)
+      .post(`/api/sweets/${sweet._id}/purchase`)
+      .set("Authorization", `Bearer ${token}`)
+      .send({ quantity: 15 });
+
+    expect(res.statusCode).toBe(400);
+    expect(res.body).toHaveProperty("error", "Not enough stock available");
+  });
+
+  it("should fail when quantity is missing or invalid", async () => {
+    const res = await request(app)
+      .post(`/api/sweets/${sweet._id}/purchase`)
+      .set("Authorization", `Bearer ${token}`)
+      .send({ quantity: -3 });
+
+    expect(res.statusCode).toBe(400);
+    expect(res.body).toHaveProperty("error", "Quantity must be greater than 0");
+  });
+
+  it("should return 404 when sweet does not exist", async () => {
+    const res = await request(app)
+      .post(`/api/sweets/507f1f77bcf86cd799439011/purchase`) // random ObjectId
+      .set("Authorization", `Bearer ${token}`)
+      .send({ quantity: 2 });
+
+    expect(res.statusCode).toBe(404);
+    expect(res.body).toHaveProperty("error", "Sweet not found");
+  });
 
 
 
