@@ -2,6 +2,10 @@ const Sweet = require("../models/sweet.model");
 
 const addSweet = async (req, res) => {
   const { name, category, price, quantityInStock } = req.body;
+   // Validation
+    if (!name || !category || price == null || quantityInStock == null) {
+      return res.status(400).json({ error: "All fields are required" });
+    }
   // check for negative values
   if (price < 0) {
     return res.status(400).json({ error: "Price must be positive" });
