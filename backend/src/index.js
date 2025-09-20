@@ -11,7 +11,7 @@ connectDB(); // Connect to the database
 const app = express(); // Initialize Express app
 app.use(cors()); // Enable CORS
 app.use(express.json()); // Enable JSON parsing
-
+app.use(express.urlencoded({ extended: true }));
 app.use("/api/auth", authRoutes);
 app.use("/api/sweets",auth, sweetsRoutes);
 app.listen(PORT, () => {

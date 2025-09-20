@@ -6,11 +6,11 @@ function SweetCard({ sweet, onPurchase }) {
       <h3>{sweet.name}</h3>
       <p>Category: {sweet.category}</p>
       <p>Price: ₹{sweet.price}</p>
-      <p>Quantity: {sweet.quantity}</p>
-      <button 
-        onClick={() => onPurchase(sweet._id)} 
-        disabled={sweet.quantity === 0}
-        style={{ padding: "5px 10px", cursor: sweet.quantity === 0 ? "not-allowed" : "pointer" }}
+      <p>Quantity: {sweet.quantityInStock}</p>
+      <button
+        onClick={() => onPurchase(sweet._id)}
+        disabled={sweet.quantityInStock === 0}
+        style={{ padding: "5px 10px", cursor: sweet.quantityInStock === 0 ? "not-allowed" : "pointer" }}
       >
         {sweet.quantity === 0 ? "Out of Stock" : "Purchase"}
       </button>
