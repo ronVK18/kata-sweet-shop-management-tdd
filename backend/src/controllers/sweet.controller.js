@@ -89,7 +89,17 @@ const searchSweets = async (req, res) => {
       // case-insensitive search
       filter.name = { $regex: name, $options: "i" };
     }
-    
+
+    if (category) {
+      filter.category = { $regex: category, $options: "i" };
+    }
+
+    if (minPrice || maxPrice) {
+      filter.price = {};
+      if (minPrice) filter.price.$gte = Number(minPrice);
+      if (maxPrice) filter.price.$lte = Number(maxPrice);
+    }
+
     const sweets = await Sweet.find(filter);
     res.status(200).json({ sweets });
   } catch (error) {
@@ -97,4 +107,4 @@ const searchSweets = async (req, res) => {
     res.status(500).json({ error: "Server error" });
   }
 };
-module.exports = { addSweet, getAllSweets, updateSweet };
+module.exports = { addSweet, getAllSweets, updateSweet ,searchSweets};

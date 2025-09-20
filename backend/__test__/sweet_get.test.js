@@ -8,11 +8,12 @@ const JWT_SECRET = process.env.JWT_SECRET || "secret";
 describe("Sweet API - Get All Sweets (Protected)", () => {
   let token;
 
-  beforeAll(() => {
+  beforeAll(async() => {
     // Generate a valid token
     token = jwt.sign({ id: "123", username: "testuser" }, JWT_SECRET, {
       expiresIn: "1h",
     });
+    await Sweet.deleteMany();
   });
 
   afterEach(async () => {
